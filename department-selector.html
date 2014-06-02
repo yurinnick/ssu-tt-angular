@@ -1,0 +1,3 @@
+<select class="form-control" ng-model="department" ng-options="d.tag as d.name for d in departments" ng-change="departmentController.setDepartment(department)">
+    <option value="">-- select department --</option>
+</select>

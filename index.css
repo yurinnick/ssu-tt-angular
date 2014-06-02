@@ -1,0 +1,27 @@
+#head-container {
+    width: 100%;
+    background: yellow;
+}
+
+#site-title {
+    float: left;
+    height: auto;
+    vertical-align: middle;
+}
+
+#department-selector {
+    float: left;
+}
+
+#timetable-container {
+    width: 100%;
+    background: green;
+}
+
+#groups-selector {
+    float: right;
+}
+
+#selectros {
+    float: right;
+}

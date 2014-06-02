@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="ssutt">
+<head>
+    <meta charset="UTF-8">
+    <title>SSU TimeTables</title>
+
+    <script src="app/components/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="department-selector.js"></script>
+    <script src="group-selector.js"></script>
+
+
+    <link rel="stylesheet" href="app/components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+    <div id="head-container" class="container">
+        <div id="site-title" class="col-md-4">
+            <h1>SSU TimeTables</h1>
+        </div>
+        <div id="selectors" class="col-md-6">
+            <div id="department-selector" class="col-md-8">
+                <department-selector></department-selector>
+            </div>
+            <div id="groups-selector" class="col-md-4">
+                <group-selector></group-selector>
+            </div>
+        </div>
+    </div>
+    <div id="timetable-container" class="container">
+        {{ "a" + "b" }}
+    </div>
+</body>
+</html>

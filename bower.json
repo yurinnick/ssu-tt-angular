@@ -1,0 +1,7 @@
+{
+    "name": "ssutt",
+    "dependencies": {
+        "bootstrap": "*",
+        "angular": "*"
+    }
+}
