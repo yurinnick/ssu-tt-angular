@@ -1,21 +1,15 @@
 #head-container {
     width: 100%;
-    background: yellow;
+    height: 5em;
 }
 
 #site-title {
-    float: left;
-    height: auto;
-    vertical-align: middle;
+/*    float: left;*/
+    height: 5em;
 }
 
 #department-selector {
     float: left;
-}
-
-#timetable-container {
-    width: 100%;
-    background: green;
 }
 
 #groups-selector {
@@ -24,4 +18,10 @@
 
 #selectros {
     float: right;
+}
+
+#selectors {
+    height: auto;
+    float: right;
+/*    border: 1px;*/
 }

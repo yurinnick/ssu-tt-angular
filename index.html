@@ -5,31 +5,33 @@
     <title>SSU TimeTables</title>
 
     <script src="app/components/angular/angular.min.js"></script>
+    <script src="app/components/angular-bootstrap/ui-bootstrap.min.js"></script>
+
     <script src="app.js"></script>
     <script src="department-selector.js"></script>
     <script src="group-selector.js"></script>
+    <script src="schedule.js"></script>
 
-
+    <link rel="stylesheet" href="app/components/ng-table/ng-table.min.css">
     <link rel="stylesheet" href="app/components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
-
 </head>
 <body>
-    <div id="head-container" class="container">
-        <div id="site-title" class="col-md-4">
+    <div id="head-container" class="row">
+        <div id="site-title" class="col-xs-6 col-md-8 col-lg-3">
             <h1>SSU TimeTables</h1>
         </div>
-        <div id="selectors" class="col-md-6">
-            <div id="department-selector" class="col-md-8">
+        <div id="selectors" class="col-xs-7 col-md-8 col-lg-6">
+            <div id="department-selector" class="col-xs-9 col-md-8 col-lg-7">
                 <department-selector></department-selector>
             </div>
-            <div id="groups-selector" class="col-md-4">
+            <div id="groups-selector" class="col-xs-7 col-md-5 col-lg-5">
                 <group-selector></group-selector>
             </div>
         </div>
     </div>
     <div id="timetable-container" class="container">
-        {{ "a" + "b" }}
+        <schedule></schedule>
     </div>
 </body>
 </html>

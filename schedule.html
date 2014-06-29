@@ -1,0 +1,34 @@
+<div id="timetable" ng-show="schedule">
+    <div id="parity-selector" class="btn-group">
+        <label class="btn btn-default" ng-model="parityState" btn-radio="'0'">Числитель</label>
+        <label class="btn btn-default" ng-model="parityState" btn-radio="'1'">Знаменатель</label>
+    </div>
+    <table ng-disabled="!schedule" class="table">
+        <tr>
+            <th>Время</th>
+            <th>Понедельник</th>
+            <th>Вторник</th>
+            <th>Среда</th>
+            <th>Четверг</th>
+            <th>Пятница</th>
+            <th>Суббота</th>
+        </tr>
+        <tr ng-repeat="sequence in [1, 2, 3, 4, 5, 6, 7, 8]">
+           <td>time</td>
+            <td ng-repeat="record in schedule | sequenceFilter:sequence">
+                <section ng-repeat="subject in record.subject | parityFilter:parityState">
+                    <b>{{ subject.name }}</b>
+                    <li ng-repeat="subgroup in subject.subgroups">
+                        <header ng-show="subgroup.subgroup">{{ subgroup.subgroup }}</header>
+                        <main>
+                            {{ subgroup.teacher }}<br>
+                            {{ subgroup.location  }}
+                        </main>
+                    </li>
+                </section>
+            </td>
+        </tr>
+    </table>
+</div>
+
+{{ schedule }}
