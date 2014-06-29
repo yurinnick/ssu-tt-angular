@@ -23,7 +23,7 @@ groupSelector.directive('groupSelector', function () {
     "use strict";
     return {
         restrict: 'E',
-        templateUrl: 'partials/group-selector.html',
+        templateUrl: 'views/group-selector.html',
         controller: 'groupController',
         controllerAs: 'groupController'
     };

@@ -55,7 +55,7 @@ schedule.directive('schedule', function () {
     "use strict";
     return {
         restrict: 'E',
-        templateUrl: 'partials/schedule.html',
+        templateUrl: 'views/schedule.html',
         controller: 'scheduleController',
         controllerAs: 'scheduleController'
     };

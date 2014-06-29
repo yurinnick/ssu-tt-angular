@@ -19,7 +19,7 @@ departmentSelector.directive('departmentSelector', function () {
     "use strict";
     return {
         restrict: 'E',
-        templateUrl: 'partials/department-selector.html',
+        templateUrl: 'views/department-selector.html',
         controller: 'departmentController',
         controllerAs: 'departmentController'
     };
