@@ -5,23 +5,18 @@ schedule.controller('scheduleController', ['$http', '$scope', '$log',
         "use strict";
         $scope.schedule = null;
         $scope.parityState = '0';
-        $scope.$watch('group', function (newVal) {
+        
+        $scope.getSchedule = function(department_id, group_id) {
             var schedule_request = 'http://api.ssutt.org:8080/2/department/' +
-                $scope.department + '/group/' + $scope.group;
+                department_id + '/group/' + group_id;
 
-            $log.debug('Fetching timetable data for ' + $scope.department +
-                       ' department ' + $scope.group + ' group');
+            $log.debug('Fetching timetable data for ' + department_id +
+                       ' department ' + group_id + ' group');
 
             $http.get(schedule_request).success(function (data) {
                 $scope.schedule = data;
-            });
-        });
-
-        $scope.$watch('department', function (newVal) {
-            $scope.schedule = null;
-        });
-
-        var DEBUG = false;
+            });            
+        };
     }]);
 
 schedule.filter('sequenceFilter', [function () {

@@ -1,3 +1,3 @@
-<select class="form-control" ng-model="group" ng-options="g as g for g in groups" ng-disabled="!department" ng-change="groupController.setGroup(group)">
+<select class="form-control" ng-model="group" ng-options="g as g for g in groups" ng-disabled="!department" ng-change="getSchedule(department, group)">
     <option value="">- выберите группу -</option>
 </select>
