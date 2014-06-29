@@ -17,7 +17,7 @@
            <td>time</td>
             <td ng-repeat="record in schedule | sequenceFilter:sequence">
                 <section ng-repeat="subject in record.subject | parityFilter:parityState">
-                    <b>{{ subject.name }}</b>
+                    <b>{{ subject.activity }} - {{ subject.name }}</b>
                     <li ng-repeat="subgroup in subject.subgroups">
                         <header ng-show="subgroup.subgroup">{{ subgroup.subgroup }}</header>
                         <main>

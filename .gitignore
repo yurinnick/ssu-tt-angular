@@ -1,1 +1,7 @@
-/app
+logs/*
+!.gitkeep
+node_modules/
+components/
+tmp
+.DS_Store
+.idea
