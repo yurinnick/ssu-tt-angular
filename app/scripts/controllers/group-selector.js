@@ -7,7 +7,7 @@ groupSelector.controller('groupController', ['$http', '$scope', '$log', '$cookie
         $scope.group = $cookieStore.get('group_id') || null;
         $scope.getGroups = function(department_id) {
             if (department_id) {
-                if ($scope.department_id != undefined) {                    
+                if (department_id !== undefined) {                    
                     $cookieStore.put('deparment_id', department_id);
                 };
                 $log.debug('Fetching groups data for ' + department_id);
