@@ -7,7 +7,7 @@ schedule.controller('scheduleController', ['$http', '$scope', '$log', '$cookieSt
         $scope.parityState = '0';
         
         $scope.getSchedule = function(department_id, group_id) {
-            if ($scope.department_id != undefined) {
+            if ($scope.group_id != undefined) {
                 $cookieStore.put('group_id', group_id);
             };
             if (group_id && department_id) {
