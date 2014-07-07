@@ -7,7 +7,9 @@ schedule.controller('scheduleController', ['$http', '$scope', '$log', '$cookieSt
         $scope.parityState = '0';
         
         $scope.getSchedule = function(department_id, group_id) {
-            $cookieStore.put('group_id', group_id);
+            if ($scope.department_id != undefined) {
+                $cookieStore.put('group_id', group_id);
+            };
             if (group_id && department_id) {
                 var schedule_request = 'http://api.ssutt.org:8080/2/department/' +
                     department_id + '/group/' + group_id;

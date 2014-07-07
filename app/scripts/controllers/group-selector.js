@@ -7,7 +7,9 @@ groupSelector.controller('groupController', ['$http', '$scope', '$log', '$cookie
         $scope.group = $cookieStore.get('group_id') || null;
         $scope.getGroups = function(department_id) {
             if (department_id) {
-                $cookieStore.put('deparment_id', department_id);
+                if ($scope.department_id != undefined) {                    
+                    $cookieStore.put('deparment_id', department_id);
+                };
                 $log.debug('Fetching groups data for ' + department_id);
                 $http.get('http://api.ssutt.org:8080/1/department/' +
                           department_id + '/groups?filled=1').success(function (data) {
