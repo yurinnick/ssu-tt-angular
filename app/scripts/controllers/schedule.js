@@ -16,10 +16,10 @@ schedule.controller('scheduleController', ['$http', '$scope', '$log', '$cookieSt
         ];
         $scope.parityState = '0';
         
-        $scope.getSchedule = function(department_id, group_id) {
+        $scope.getSchedule = function (department_id, group_id) {
             if (group_id !== undefined) {
                 $cookieStore.put('group_id', group_id);
-            };
+            }
             if (group_id && department_id) {
                 var schedule_request = 'http://api.ssutt.org:8080/2/department/' +
                     department_id + '/group/' + group_id;
@@ -29,32 +29,34 @@ schedule.controller('scheduleController', ['$http', '$scope', '$log', '$cookieSt
 
                 $http.get(schedule_request).success(function (data) {
                     $scope.schedule = data;
-                });        
+                });
             }
         };
     }]);
 
 schedule.filter('sequenceFilter', [function () {
+    "use strict";
     return function (records, sequence) {
-        result = [];
+        var result = [];
         angular.forEach(records, function (value, key) {
             if (value.sequence === sequence) {
                 this.result[value.day] = value;
             } else if (result[value.day] === undefined) {
                 this.result[value.day] = {};
-            };
+            }
         });
         return result;
     };
 }]);
 
 schedule.filter('parityFilter', [function () {
+    "use strict";
     return function (records, parity) {
-        result = [];
+        var result = [];
         angular.forEach(records, function (value, key) {
-            if (value.parity == parity || value.parity == "2") {
+            if (value.parity === parity || value.parity === "2") {
                 this.result.push(value);
-            };
+            }
         });
         return result;
     };
