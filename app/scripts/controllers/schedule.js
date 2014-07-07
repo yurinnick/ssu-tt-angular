@@ -26,12 +26,10 @@ schedule.filter('sequenceFilter', [function () {
     return function (records, sequence) {
         result = [];
         angular.forEach(records, function (value, key) {
-            if (value.day) {
-                if (value.sequence === sequence) {
-                    this.result[value.day] = value;
-                } else if (result[value.day] === undefined) {
-                    this.result[value.day] = {};
-                };
+            if (value.sequence === sequence) {
+                this.result[value.day] = value;
+            } else if (result[value.day] === undefined) {
+                this.result[value.day] = {};
             };
         });
         return result;
