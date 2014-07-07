@@ -14,7 +14,7 @@
             <th>Суббота</th>
         </tr>
         <tr ng-repeat="sequence in [1, 2, 3, 4, 5, 6, 7, 8]">
-           <td>time</td>
+           <td>{{ schedule_time[sequence - 1] }}</td>
             <td ng-repeat="record in schedule | sequenceFilter:sequence">
                 <section ng-repeat="subject in record.subject | parityFilter:parityState">
                     <b>{{ subject.activity }} - {{ subject.name }}</b>

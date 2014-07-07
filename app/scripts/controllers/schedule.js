@@ -4,6 +4,16 @@ schedule.controller('scheduleController', ['$http', '$scope', '$log', '$cookieSt
     function ($http, $scope, $log, $cookieStore) {
         "use strict";
         $scope.schedule = null;
+        $scope.schedule_time = [
+            '8.20 - 09.50',
+            '10.00 - 11.35',
+            '12.05 - 13.40',
+            '13.50 - 15.25',
+            '15.35 - 17.10',
+            '17.20 - 18.40',
+            '18.45 - 20.05',
+            '20.10 - 21.30'
+        ];
         $scope.parityState = '0';
         
         $scope.getSchedule = function(department_id, group_id) {
