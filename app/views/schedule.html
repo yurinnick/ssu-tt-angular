@@ -1,4 +1,4 @@
-<div id="timetable" ng-show="schedule">
+<div id="timetable" ng-show="schedule" ng-init="getSchedule(department, group)">
     <div id="parity-selector" class="btn-group">
         <label class="btn btn-default" ng-model="parityState" btn-radio="'0'">Числитель</label>
         <label class="btn btn-default" ng-model="parityState" btn-radio="'1'">Знаменатель</label>
