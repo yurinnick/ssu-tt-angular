@@ -1,3 +1,2 @@
-<select class="form-control" ng-model="group" ng-options="g as g for g in groups" ng-disabled="!department" ng-change="getSchedule(department, group)">
-    <option value="">- выберите группу -</option>
+<select class="navbar-form" ng-init="getGroups(department)" ng-model="group" ng-options="g as g for g in groups" ng-disabled="!department" ng-change="getSchedule(department, group)">
 </select>

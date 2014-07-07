@@ -5,7 +5,8 @@
     <title>SSU TimeTables</title>
 
     <script src="components/angular/angular.min.js"></script>
-    <script src="components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/department-selector.js"></script>
@@ -16,21 +17,21 @@
     <link rel="stylesheet" href="styles/app.css">
 </head>
 <body>
-    <div id="head-container" class="row">
-        <div id="site-title" class="col-xs-6 col-md-8 col-lg-3">
-            <h1>SSU TimeTables</h1>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand">SSU TimeTable</span>
         </div>
-        <div id="selectors" class="col-xs-7 col-md-8 col-lg-6">
-            <div id="department-selector" class="col-xs-9 col-md-8 col-lg-7">
-                <department-selector></department-selector>
-            </div>
-            <div id="groups-selector" class="col-xs-7 col-md-5 col-lg-5">
-                <group-selector></group-selector>
-            </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><department-selector></department-selector></li>
+            <li><group-selector></group-selector></li>
+          </ul>
         </div>
     </div>
-    <div id="timetable-container" class="container">
-        <schedule></schedule>
-    </div>
+</nav>
+<div id="timetable-container" class="container">
+    <schedule></schedule>
+</div>
 </body>
 </html>
