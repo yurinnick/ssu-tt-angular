@@ -35,14 +35,13 @@ schedule.controller('scheduleController', ['$http', '$scope', '$log', '$cookieSt
     }]);
 
 schedule.filter('sequenceFilter', [function () {
-    "use strict";
     return function (records, sequence) {
-        var result = [];
+        result = [];
         angular.forEach(records, function (value, key) {
             if (value.sequence === sequence) {
-                this.result[value.day] = value;
+                result[value.day] = value;
             } else if (result[value.day] === undefined) {
-                this.result[value.day] = {};
+                result[value.day] = {};
             }
         });
         return result;
@@ -50,12 +49,11 @@ schedule.filter('sequenceFilter', [function () {
 }]);
 
 schedule.filter('parityFilter', [function () {
-    "use strict";
     return function (records, parity) {
-        var result = [];
+        result = [];
         angular.forEach(records, function (value, key) {
-            if (value.parity === parity || value.parity === "2") {
-                this.result.push(value);
+            if (value.parity === parity || value.parity === 2) {
+                result.push(value);
             }
         });
         return result;
