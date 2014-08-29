@@ -52,7 +52,7 @@ schedule.filter('parityFilter', [function () {
     return function (records, parity) {
         result = [];
         angular.forEach(records, function (value, key) {
-            if (value.parity === parity || value.parity === 2) {
+            if (value.parity == parity || value.parity === 2) {
                 result.push(value);
             }
         });
