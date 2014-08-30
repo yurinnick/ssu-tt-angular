@@ -1,3 +1,4 @@
-<select class="navbar-form" ng-init="getGroups(department)" ng-model="group" ng-options="g as g for g in groups" ng-disabled="!department" ng-change="getSchedule(department, group)">
+<select class="navbar-form" ng-init="getGroups(department)" ng-model="group" 
+   ng-options="g as g for g in groups | orderBy:'toString()'" name="g" ng-disabled="!department" ng-change="getSchedule(department, group)">
     <option class="text-right" value="">{{ group || "- выберите группу -" }}</option>
 </select>
