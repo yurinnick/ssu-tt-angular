@@ -30,6 +30,14 @@
         </div>
     </div>
 </nav>
+<div id="select-info" class="container-fluid col-md-4 col-lg-4 col-xs-4 pull-right">
+    <div id="select-group-alert" class="alert alert-info" ng-show="!group">
+        <strong>Внимание!</strong> Необходимо выбрать номер группы.
+    </div>
+    <div id="select-department-alert" class="alert alert-info" ng-show="!department">
+        <strong>Внимание!</strong> Необходимо выбрать факультет.
+    </div>
+</div>
 <div id="timetable-container" class="container-fluid">
     <schedule></schedule>
 </div>
