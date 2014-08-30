@@ -14,7 +14,7 @@ groupSelector.controller('groupController', ['$http', '$scope', '$log', '$cookie
                 }
                 $log.debug('Fetching groups data for ' + department_id);
                 $http.get('http://api.ssutt.org:8080/1/department/' +
-                          department_id + '/groups?filled=1').success(function (data) {
+                          department_id + '/groups?filled=0').success(function (data) {
                     $scope.groups = data;
                     if ($scope.group && $scope.groups) {
                         if ($scope.groups.indexOf($scope.group) === -1) {
