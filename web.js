@@ -1,3 +1,7 @@
+require('nodetime').profile({
+    accountKey: process.env.NODETIME_API_KEY, 
+    appName: 'SSU TT Web'
+  });
 var gzippo = require('gzippo');
 var express = require('express');
 var app = express();
