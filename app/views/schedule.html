@@ -1,42 +1,51 @@
-<div id="timetable" ng-show="schedule" ng-init="getSchedule(department, group)">
-    <div id="parity-selector" class="btn-group col-md-4">
-        <label class="btn btn-default col-md-4 col-lg-4 col-xs-4" ng-model="parityState" btn-radio="'0'">Числитель</label>
-        <label class="btn btn-default col-md-4 col-lg-4 col-xs-4" ng-model="parityState" btn-radio="'1'">Знаменатель</label>
+<div class="container-fluid" ng-init="getSchedule(department, group)">
+    <div id="timetable" ng-show="schedule" class="row">
+        {{ schedule }}
+        <div id="parity-selector" class="btn-group col-md-4">
+            <label class="btn btn-default col-md-4 col-lg-4 col-xs-4" ng-model="parityState" btn-radio="'0'">Числитель</label>
+            <label class="btn btn-default col-md-4 col-lg-4 col-xs-4" ng-model="parityState" btn-radio="'1'">Знаменатель</label>
+        </div>
+        <div>
+            <table class="table table-striped table-condensed">
+                <tr>
+                    <th class="col-md-1 col-lg-1 col-xs-1">Время</th>
+                    <th class="col-md-2 col-lg-2 col-xs-2">Понедельник</th>
+                    <th class="col-md-2 col-lg-2 col-xs-2">Вторник</th>
+                    <th class="col-md-2 col-lg-2 col-xs-2">Среда</th>
+                    <th class="col-md-2 col-lg-2 col-xs-2">Четверг</th>
+                    <th class="col-md-2 col-lg-2 col-xs-2">Пятница</th>
+                    <th class="col-md-2 col-lg-2 col-xs-2">Суббота</th>
+                </tr>
+                <tr ng-repeat="sequence in [1, 2, 3, 4, 5, 6, 7, 8]">
+                   <td>{{ schedule_time[sequence - 1] }}</td>
+                    <td ng-repeat="record in schedule | sequenceFilter:sequence">
+                        <section ng-repeat="subject in record.subject | parityFilter:parityState" ng-switch on="subject.activity">
+                           <li class="list-group-item" ng-class="subject.activity === 'practice' ? 
+                               'list-group-item-success' : (subject.activity === 'lecture' ? 'list-group-item-danger' : 'list-group-item-info')">
+                                <h4 ng-switch-when="practice">Практика - {{ subject.name }}</h4>
+                                <h4 ng-switch-when="lecture">Лекция - {{ subject.name }}</h4>
+                                <ul class="list-group">
+                                    <li ng-repeat="subgroup in subject.subgroups">
+                                        <b class="list-group-item-heading" ng-show="subgroup.subgroup">{{ subgroup.subgroup }}</b>
+                                        <main class="list-group-item-text">
+                                            <i>{{ subgroup.teacher }}</i>
+                                            <br>
+                                            <br>
+                                            {{ subgroup.location }}
+                                        </main>
+                                    </li>
+                                </ul>
+                            </li>
+                        </section>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <div>
-        <table ng-disabled="!schedule" class="table table-striped table-condensed">
-            <tr>
-                <th class="col-md-1 col-lg-1 col-xs-1">Время</th>
-                <th class="col-md-2 col-lg-2 col-xs-2">Понедельник</th>
-                <th class="col-md-2 col-lg-2 col-xs-2">Вторник</th>
-                <th class="col-md-2 col-lg-2 col-xs-2">Среда</th>
-                <th class="col-md-2 col-lg-2 col-xs-2">Четверг</th>
-                <th class="col-md-2 col-lg-2 col-xs-2">Пятница</th>
-                <th class="col-md-2 col-lg-2 col-xs-2">Суббота</th>
-            </tr>
-            <tr ng-repeat="sequence in [1, 2, 3, 4, 5, 6, 7, 8]">
-               <td>{{ schedule_time[sequence - 1] }}</td>
-                <td ng-repeat="record in schedule | sequenceFilter:sequence">
-                    <section ng-repeat="subject in record.subject | parityFilter:parityState" ng-switch on="subject.activity">
-                       <li class="list-group-item" ng-class="subject.activity === 'practice' ? 
-                           'list-group-item-success' : (subject.activity === 'lecture' ? 'list-group-item-danger' : 'list-group-item-info')">
-                            <h4 ng-switch-when="practice">Практика - {{ subject.name }}</h4>
-                            <h4 ng-switch-when="lecture">Лекция - {{ subject.name }}</h4>
-                            <ul class="list-group">
-                                <li ng-repeat="subgroup in subject.subgroups">
-                                    <b class="list-group-item-heading" ng-show="subgroup.subgroup">{{ subgroup.subgroup }}</b>
-                                    <main class="list-group-item-text">
-                                        <i>{{ subgroup.teacher }}</i>
-                                        <br>
-                                        <br>
-                                        {{ subgroup.location }}
-                                    </main>
-                                </li>
-                            </ul>
-                        </li>
-                    </section>
-                </td>
-            </tr>
-        </table>
-    <div>
+    <div id="missing-timetable" class="row jumbotron" ng-if="schedule === undefined">
+        <h1>Приносим свои извинения!</h1>
+        <p>На данный момент расписание для выбранной группы недоступно</p>
+        <p><a class="btn btn-primary btn-lg" role="button" 
+        ng-href="http://www.sgu.ru/schedule/{{ department }}/do/{{ group }}">Перейти на сайт СГУ</a></p>
+    </div>
 </div>

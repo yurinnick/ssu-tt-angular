@@ -28,7 +28,11 @@ schedule.controller('scheduleController', ['$http', '$scope', '$log', '$cookieSt
                            ' department ' + group_id + ' group');
 
                 $http.get(schedule_request).success(function (data) {
-                    $scope.schedule = data;
+                    if (data.length !== 0) {
+                        $scope.schedule = data;
+                    } else {
+                        $scope.schedule = undefined;
+                    }
                 });
             }
         };
