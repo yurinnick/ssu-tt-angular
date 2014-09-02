@@ -1,7 +1,7 @@
 var schedule = angular.module('schedule', ['ui.bootstrap', 'ngCookies']);
 
-schedule.controller('scheduleController', ['$http', '$scope', '$log', '$cookieStore',
-    function ($http, $scope, $log, $cookieStore) {
+schedule.controller('scheduleController', ['$http', '$scope', '$log', '$cookieStore', '$location',
+    function ($http, $scope, $log, $cookieStore, $location) {
         "use strict";
         $scope.schedule = null;
         $scope.schedule_time = [
@@ -15,12 +15,12 @@ schedule.controller('scheduleController', ['$http', '$scope', '$log', '$cookieSt
             '20.10 - 21.30'
         ];
         $scope.parityState = '0';
-        
         $scope.getSchedule = function (department_id, group_id) {
             if (group_id !== undefined) {
                 $cookieStore.put('group_id', group_id);
             }
             if (group_id && department_id) {
+		$location.search({department:department_id,group:group_id});
                 var schedule_request = 'http://api.ssutt.org:8080/2/department/' +
                     department_id + '/group/' + group_id;
 
@@ -36,6 +36,8 @@ schedule.controller('scheduleController', ['$http', '$scope', '$log', '$cookieSt
                 });
             }
         };
+
+
     }]);
 
 schedule.filter('sequenceFilter', [function () {

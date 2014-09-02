@@ -1,10 +1,11 @@
 var groupSelector = angular.module('group-selector', ['ngCookies']);
 
-groupSelector.controller('groupController', ['$http', '$scope', '$log', '$cookieStore',
-    function ($http, $scope, $log, $cookieStore) {
+groupSelector.controller('groupController', ['$http', '$scope', '$log', '$cookieStore', '$location',
+    function ($http, $scope, $log, $cookieStore, $location) {
         "use strict";
         $scope.groups = null;
-        $scope.group = $cookieStore.get('group_id') || null;
+        $scope.params = $location.search();
+        $scope.group = $cookieStore.get('group_id') || $scope.params.group || null;
         $scope.getGroups = function (department_id) {
             $scope.schedule = null;
 //            $scope.group = $cookieStore.get('group_id') || null;

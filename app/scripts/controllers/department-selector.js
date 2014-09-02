@@ -1,9 +1,10 @@
 var departmentSelector = angular.module('department-selector', ['ngCookies']);
 
-departmentSelector.controller('departmentController', ['$http', '$scope', '$log', '$cookieStore',
-    function ($http, $scope, $log, $cookieStore) {
+departmentSelector.controller('departmentController', ['$http', '$scope', '$log', '$cookieStore', '$location',
+    function ($http, $scope, $log, $cookieStore, $location) {
         "use strict";
-        $scope.department = $cookieStore.get('deparment_id') || null;
+        $scope.params = $location.search();
+        $scope.department = $cookieStore.get('deparment_id') || $scope.params.department || null;
         $scope.departments = null;
         $http.get('http://api.ssutt.org:8080/1/departments').success(function (data) {
             $scope.departments = data;
